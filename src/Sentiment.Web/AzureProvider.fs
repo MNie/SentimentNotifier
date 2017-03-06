@@ -5,36 +5,36 @@ namespace Sentiment.Azure
     open Sentiment.Data
 
     type responseJson =
-            {
-                documents: seq<responseDoc>
-                errors: string list
-            }
-        and responseDoc =
-            {
-                score: double
-                id: string
-            }
+        {
+            documents: seq<responseDoc>
+            errors: string list
+        }
+    and responseDoc =
+        {
+            score: double
+            id: string
+        }
 
-        type requestJson =
-            {
-                documents: seq<document>
-            }
-        and document =
-            {
-                language: string
-                id: string
-                text: string
-            }
+    type requestJson =
+        {
+            documents: seq<document>
+        }
+    and document =
+        {
+            language: string
+            id: string
+            text: string
+        }
 
-        type results =
-            {
-                sentiments: estimatedDoc list
-            }
-        and estimatedDoc =
-            {
-                Estimate: SentimentData
-                Score: double
-            }
+    type results =
+        {
+            sentiments: estimatedDoc list
+        }
+    and estimatedDoc =
+        {
+            Estimate: SentimentData
+            Score: double
+        }
 
     type AzureProvider() =
         let createJson (data:seq<SentimentData>) =
