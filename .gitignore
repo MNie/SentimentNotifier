@@ -390,3 +390,7 @@ paket-files/
 # JetBrains Rider
 .idea/
 *.sln.iml
+
+# quartz xsd file
+
+src/**/*.xsd
