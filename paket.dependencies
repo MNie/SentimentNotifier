@@ -2,3 +2,8 @@ source https://www.nuget.org/api/v2
 nuget FAKE
 nuget FSharp.Core
 nuget Nancy.Hosting.Self
+nuget SQLProvider
+nuget FSharp.Data.TypeProviders
+nuget Newtonsoft.Json
+nuget Quartz
+nuget FSharp.Data

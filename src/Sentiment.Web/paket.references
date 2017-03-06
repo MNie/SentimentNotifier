@@ -1,2 +1,7 @@
 FSharp.Core
 Nancy.Hosting.Self
+SQLProvider
+FSharp.Data.TypeProviders
+Newtonsoft.Json
+Quartz
+FSharp.Data
