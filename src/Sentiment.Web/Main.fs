@@ -7,13 +7,14 @@ namespace Sentiment.Web
     open Quartz.Impl
     open Sentiment.Data
     open Sentiment.Azure
+    open Sentiment.Mail
 
     type Job () =
         interface IJob with
             member x.Execute(context: IJobExecutionContext) =
                 DataProvider().GetFromLastWeek()
                 |> AzureProvider().GetSentiment
-                |> ignore
+                |> MailSender().Send
 
     let triggerJob =
         TriggerBuilder.Create()

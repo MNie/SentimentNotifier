@@ -5,3 +5,4 @@ FSharp.Data.TypeProviders
 Newtonsoft.Json
 Quartz
 FSharp.Data
+FSharp.Configuration

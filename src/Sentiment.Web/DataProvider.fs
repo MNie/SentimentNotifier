@@ -1,12 +1,11 @@
 namespace Sentiment.Data
-    module Helpers =
-        open System
-        let (|Null|Value|) (x: _ Nullable) =
-            if x.HasValue then Value x.Value else Null
-
     open Microsoft.FSharp.Linq
     open System
     open FSharp.Data.TypeProviders
+
+    module Helpers =
+        let (|Null|Value|) (x: _ Nullable) =
+            if x.HasValue then Value x.Value else Null
 
     type SentimentData =
         {
@@ -21,10 +20,9 @@ namespace Sentiment.Data
             EvaluationTime: Nullable<DateTime>
         }
 
-    type dbSchema = SqlDataConnection<"""Data Source=localhost;Initial Catalog=Sentiment;Integrated Security=SSPI;""">
+    type dbSchema = SqlDataConnection<ConnectionStringName = "db", ConfigFile = "App.config">
 
     type DataProvider() =
-
         let timeComparison (dbDate: Nullable<DateTime>) comparedTo =
             match dbDate with
             | Helpers.Value dbDate -> dbDate > comparedTo

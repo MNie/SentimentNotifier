@@ -7,3 +7,4 @@ nuget FSharp.Data.TypeProviders
 nuget Newtonsoft.Json
 nuget Quartz
 nuget FSharp.Data
+nuget FSharp.Configuration
