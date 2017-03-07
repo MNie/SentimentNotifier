@@ -46,9 +46,9 @@ namespace Sentiment.Azure
 
         let getSentimentScore json =
             let serializeJson = JsonConvert.SerializeObject json
-            let response = Http.RequestString("https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/sentiment",
+            let response = Http.RequestString(Settings.AzureApiUrl,
                 body = TextRequest serializeJson,
-                headers = [ContentType HttpContentTypes.Json; "Ocp-Apim-Subscription-Key", "api_key"])
+                headers = [ContentType HttpContentTypes.Json; "Ocp-Apim-Subscription-Key", Settings.ApiKey])
             response
 
         member this.GetSentiment (data) =

@@ -1,10 +1,8 @@
 namespace Sentiment.Mail
     open System
     open System.Net.Mail
-    open System.Configuration
-    open FSharp.Configuration
+    open Sentiment.Data
     open Newtonsoft.Json
-    type Settings = AppSettings<"app.config">
 
     type MailSender() =
         let createMessage (data) =

@@ -2,6 +2,10 @@ namespace Sentiment.Data
     open Microsoft.FSharp.Linq
     open System
     open FSharp.Data.TypeProviders
+    open System.Configuration
+    open FSharp.Configuration
+    open Newtonsoft.Json
+    type Settings = AppSettings<"app.config">
 
     module Helpers =
         let (|Null|Value|) (x: _ Nullable) =
