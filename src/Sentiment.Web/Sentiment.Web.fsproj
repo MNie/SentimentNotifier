@@ -51,6 +51,7 @@
     <Compile Include="DataProvider.fs" />
     <Compile Include="AzureProvider.fs" />
     <Compile Include="MailSender.fs" />
+    <Compile Include="JobProvider.fs" />
     <Compile Include="App.fs" />
     <Compile Include="Main.fs" />
   </ItemGroup>

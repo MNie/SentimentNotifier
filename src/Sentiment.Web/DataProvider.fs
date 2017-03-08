@@ -7,10 +7,6 @@ namespace Sentiment.Data
     open Newtonsoft.Json
     type Settings = AppSettings<"app.config">
 
-    module Helpers =
-        let (|Null|Value|) (x: _ Nullable) =
-            if x.HasValue then Value x.Value else Null
-
     type SentimentData =
         {
             Id: int

@@ -51,9 +51,12 @@ namespace Sentiment.Azure
 
         let getSentimentScore json =
             let serializeJson = JsonConvert.SerializeObject json
-            let response = Http.RequestString(Settings.AzureApiUrl.AbsoluteUri,
-                body = TextRequest serializeJson,
-                headers = [ContentType HttpContentTypes.Json; "Ocp-Apim-Subscription-Key", Settings.ApiKey])
+            let response =
+                Http.RequestString(
+                    Settings.AzureApiUrl.AbsoluteUri,
+                    body = TextRequest serializeJson,
+                    headers = [ContentType HttpContentTypes.Json; "Ocp-Apim-Subscription-Key", Settings.ApiKey]
+                )
             response
 
         member this.GetSentiment (data) =
