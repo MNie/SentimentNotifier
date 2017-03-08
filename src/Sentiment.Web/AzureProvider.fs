@@ -7,12 +7,17 @@ namespace Sentiment.Azure
     type responseJson =
         {
             documents: seq<responseDoc>
-            errors: string list
+            errors: seq<errors>
         }
     and responseDoc =
         {
             score: double
             id: string
+        }
+    and errors =
+        {
+            id: string
+            message: string
         }
 
     type requestJson =
@@ -46,7 +51,7 @@ namespace Sentiment.Azure
 
         let getSentimentScore json =
             let serializeJson = JsonConvert.SerializeObject json
-            let response = Http.RequestString(Settings.AzureApiUrl,
+            let response = Http.RequestString(Settings.AzureApiUrl.AbsoluteUri,
                 body = TextRequest serializeJson,
                 headers = [ContentType HttpContentTypes.Json; "Ocp-Apim-Subscription-Key", Settings.ApiKey])
             response

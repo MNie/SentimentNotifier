@@ -27,17 +27,12 @@ namespace Sentiment.Data
     type dbSchema = SqlDataConnection<ConnectionStringName = "db", ConfigFile = "App.config">
 
     type DataProvider() =
-        let timeComparison (dbDate: Nullable<DateTime>) comparedTo =
-            match dbDate with
-            | Helpers.Value dbDate -> dbDate > comparedTo
-            | _ -> false
-
         member this.GetFromLastWeek() =
             let db = dbSchema.GetDataContext()
             let weekAgo = (DateTime.UtcNow).AddDays(-7.0)
             query {
                 for row in db.Evaluations do
-                where (timeComparison row.Time weekAgo)
+                where (row.Time ?> weekAgo)
                 select row
             }
             |> Seq.map (fun row -> {Id = row.Id; User = row.UserId; EstimatedUser = row.EstimatedUserId; Evaluation = row.Comment; Score = row.Score; RecommendationScore = row.RecommendationScore; RecommendationNumber = row.Number; RecommendationId = row.ItemId; EvaluationTime = row.Time})
