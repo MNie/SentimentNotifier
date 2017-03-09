@@ -16,7 +16,7 @@ namespace Sentiment.Job
         let private triggerJob =
             TriggerBuilder.Create()
                 .WithSimpleSchedule(fun x ->
-                    x.WithIntervalInHours(12 * 7).RepeatForever() |> ignore)
+                    x.WithIntervalInHours(24 * 7).RepeatForever() |> ignore)
                 .Build()
 
         let scheduleJob () =
